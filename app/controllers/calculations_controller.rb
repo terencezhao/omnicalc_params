@@ -55,4 +55,15 @@ class CalculationsController < ApplicationController
       @payment = (@user_apr / 100 / 12.0 * @user_pv) / (1.0 - ((1.0 + (@user_apr / 100 / 12.0))**(-@user_years*12.0)))
       render("calculations/payment_form_results_template.html.erb")
    end
+   
+   def random_form
+      render("calculations/random_form_template.html.erb")
+   end
+   def random_form_results
+      @user_min = params["user_min"].to_f
+      @user_max = params["user_max"].to_f
+      @random = rand(@user_min..@user_max)
+      render("calculations/random_form_results_template.html.erb")
+   end
+   
 end

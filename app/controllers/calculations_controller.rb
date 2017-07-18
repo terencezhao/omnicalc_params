@@ -66,4 +66,18 @@ class CalculationsController < ApplicationController
       render("calculations/random_form_results_template.html.erb")
    end
    
+   def word_count_form
+      render("calculations/word_count_form_template.html.erb")
+   end
+   def word_count_form_results
+      @user_text = params["user_text"]
+      @user_word = params["user_word"]
+      @word_count = @user_text.split.size
+      @character_count_with_spaces = @user_text.size
+      @character_count_without_spaces = @user_text.split.inject(0){|count,x| count + x.size }
+
+      @occurrences = @user_text.scan(@user_word.to_s).size
+      render("calculations/word_count_form_results_template.html.erb")
+   end
+   
 end

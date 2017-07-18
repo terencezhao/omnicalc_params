@@ -19,6 +19,13 @@ class CalculationsController < ApplicationController
       render("calculations/flexible_payment_template.html.erb")
    end
    
+   def flex_random
+      @start = params["start"].to_i
+      @end = params["end"].to_i
+      @random_number = rand(@start..@end)
+      render("calculations/flexible_random_template.html.erb")
+   end
+   
    def square_form
       render("calculations/square_form_template.html.erb")
    end

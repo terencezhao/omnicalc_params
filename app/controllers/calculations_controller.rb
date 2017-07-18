@@ -39,10 +39,20 @@ class CalculationsController < ApplicationController
    def square_root_form
       render("calculations/square_root_form_template.html.erb")
    end
-   
    def square_root_form_results
       @user_number = params["user_number"].to_f
       @square_root = Math.sqrt(@user_number)
       render("calculations/square_root_form_results_template.html.erb")
+   end
+   
+   def payment_form
+      render("calculations/payment_form_template.html.erb")
+   end
+   def payment_form_results
+      @user_apr = params["user_apr"].to_f
+      @user_years = params["user_years"].to_f
+      @user_pv = params["user_pv"].to_i
+      @payment = (@user_apr / 100 / 12.0 * @user_pv) / (1.0 - ((1.0 + (@user_apr / 100 / 12.0))**(-@user_years*12.0)))
+      render("calculations/payment_form_results_template.html.erb")
    end
 end

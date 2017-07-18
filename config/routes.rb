@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   
   get("/square_root/new", { :controller => "calculations", :action => "square_root_form" })
   get("/square_root/results", { :controller => "calculations", :action => "square_root_form_results" })
+  
+  get("/payment/new", { :controller => "calculations", :action => "payment_form" })
+  get("/payment/results", { :controller => "calculations", :action => "payment_form_results" })
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
